@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--     DOMContentLoaded 和异步脚本不会彼此等待：
+DOMContentLoaded 可能会发生在异步脚本之前（如果异步脚本在页面完成后才加载完成）
+DOMContentLoaded 也可能发生在异步脚本之后（如果异步脚本很短，或者是从 HTTP 缓存中加载的） -->
+    <p>...content before scripts...</p>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => alert("DOM ready!"));
+    </script>
+
+    <script
+      async
+      src="https://javascript.info/article/script-async-defer/long.js"
+    ></script>
+    <script
+      async
+      src="https://javascript.info/article/script-async-defer/small.js"
+    ></script>
+
+    <p>...content after scripts...</p>
+  </body>
+</html>
